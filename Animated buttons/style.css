@@ -1,0 +1,93 @@
+body {
+  background-color: black;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.button-1 { border-color: #3498db; }
+.button-2 { border-color: #e74c3c; }
+.button-3 { border-color: #2ecc71; }
+
+.button:hover {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.button-1:hover { animation-name: borderColor1; }
+.button-2:hover { animation-name: borderColor2; }
+.button-3:hover { animation-name: borderColor3; }
+
+@keyframes borderColor1 {
+  0% { 
+    border-color: #3498db; 
+    box-shadow: 0 0 20px #3498db;
+  }
+  33% { 
+    border-color: #e74c3c; 
+    box-shadow: 0 0 20px #e74c3c;
+  }
+  66% { 
+    border-color: #2ecc71; 
+    box-shadow: 0 0 20px #2ecc71;
+  }
+  100% { 
+    border-color: #3498db; 
+    box-shadow: 0 0 20px #3498db;
+  }
+}
+
+@keyframes borderColor2 {
+  0% { 
+    border-color: #e74c3c; 
+    box-shadow: 0 0 20px #e74c3c;
+  }
+  33% { 
+    border-color: #2ecc71; 
+    box-shadow: 0 0 20px #2ecc71;
+  }
+  66% { 
+    border-color: #3498db; 
+    box-shadow: 0 0 20px #3498db;
+  }
+  100% { 
+    border-color: #e74c3c; 
+    box-shadow: 0 0 20px #e74c3c;
+  }
+}
+
+@keyframes borderColor3 {
+  0% { 
+    border-color: #2ecc71; 
+    box-shadow: 0 0 20px #2ecc71;
+  }
+  33% { 
+    border-color: #3498db; 
+    box-shadow: 0 0 20px #3498db;
+  }
+  66% { 
+    border-color: #e74c3c; 
+    box-shadow: 0 0 20px #e74c3c;
+  }
+  100% { 
+    border-color: #2ecc71; 
+    box-shadow: 0 0 20px #2ecc71;
+  }
+}
