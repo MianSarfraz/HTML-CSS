@@ -1,0 +1,56 @@
+<style>
+    .trust-box {
+        display: flex;
+        align-items: center;
+        margin-top: -3px;
+        border-radius: 5px;
+        max-width: max-content;
+        position: relative;
+    }
+    .trust-image {
+        height: 25px; /* Reduced size */
+        width: 25px;  /* Reduced size */
+        object-fit: cover;
+        border-radius: 50%; /* Circular shape */
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 4px 15px 0px;
+        border: 1px solid white;
+        position: relative;
+        z-index: 2; /* Bring the first image to the front */
+    }
+    .trust-image:nth-child(2) {
+        margin-left: -15px; /* Adjust spacing between the images */
+        z-index: 1; /* Send the second image behind the first one */
+    }
+    .trust-box-wrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 25px; /* Reduced margin to align with images */
+    }
+    .trust-text {
+        margin: 0;
+        font-size: 14px; /* Reduced font size */
+        color: #333;
+    }
+    @media (max-width: 767px) {
+        .trust-image {
+            height: 30px; /* Adjusted for smaller screens */
+            width: 30px;
+        }
+        .trust-text {
+            font-size: 13px; /* Smaller font for mobile */
+        }
+        .trust-box-wrapper {
+            margin-left: 15px; /* Adjusted margin for mobile */
+        }
+    }
+</style>
+
+<div class="trust-box">
+    <img class="trust-image" src="https://picsum.photos/25" alt="Trust Image 1">
+    <img class="trust-image" src="https://picsum.photos/25?random=1" alt="Trust Image 2">
+    <div class="trust-box-wrapper">
+        <p class="trust-text">
+            <strong>Fabrice</strong> and <strong>2,384 others</strong> like this product
+        </p>
+    </div>
+</div>
