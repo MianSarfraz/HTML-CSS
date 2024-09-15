@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Login/Signup Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+            animation: gradientAnimation 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            color: #fff;
+            font-size: 18px;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cube-face h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #f0f0f0;
+        }
+
+        .cube-face input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+
+        .cube-face input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cube-face input:focus {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cube-face button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa69e);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cube-face button:hover {
+            background: linear-gradient(135deg, #ffa69e, #ff6b6b);
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .front { transform: translateZ(150px); }
+        .back { transform: rotateY(180deg) translateZ(150px); }
+        .right { transform: rotateY(90deg) translateZ(150px); }
+        .left { transform: rotateY(-90deg) translateZ(150px); }
+        .top { transform: rotateX(-90deg) translateZ(150px); }
+        .bottom { transform: rotateX(90deg) translateZ(150px); }
+
+        .nav-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                width: 250px;
+                height: 250px;
+            }
+            .cube-face {
+                font-size: 16px;
+            }
+            .front, .back, .right, .left, .top, .bottom {
+                transform: translateZ(125px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="cube" id="cube">
+                <div class="cube-face front">
+                    <h2>Login</h2>
+                    <input type="text" placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <button>Enter</button>
+                </div>
+                <div class="cube-face back">
+                    <h2>Sign Up</h2>
+                    <input type="text" placeholder="Create Username">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Create Password">
+                    <button>Join</button>
+                </div>
+                <div class="cube-face right">
+                    <h2>Forgot Password?</h2>
+                    <input type="email" placeholder="Your Email">
+                    <button>Reset</button>
+                </div>
+                <div class="cube-face left">
+                    <h2>Social Login</h2>
+                    <button style="background: #3b5998; color: white; margin-bottom: 10px;">Facebook</button>
+                    <button style="background: #db4a39; color: white;">Google</button>
+                </div>
+                <div class="cube-face top">
+                    <h2>Help</h2>
+                    <p>Need assistance? Contact our support team.</p>
+                    <button>Contact Us</button>
+                </div>
+                <div class="cube-face bottom">
+                    <h2>Terms</h2>
+                    <p>By logging in, you agree to our terms and conditions.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-dots">
+            <span class="nav-dot active" data-face="front"></span>
+            <span class="nav-dot" data-face="back"></span>
+            <span class="nav-dot" data-face="right"></span>
+            <span class="nav-dot" data-face="left"></span>
+            <span class="nav-dot" data-face="top"></span>
+            <span class="nav-dot" data-face="bottom"></span>
+        </div>
+    </div>
+
+    <script>
+        const cube = document.getElementById('cube');
+        const navDots = document.querySelectorAll('.nav-dot');
+        const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+        let currentFaceIndex = 0;
+
+        function rotateCube(face) {
+            switch(face) {
+                case 'front':
+                    cube.style.transform = 'rotateY(0deg)';
+                    break;
+                case 'back':
+                    cube.style.transform = 'rotateY(180deg)';
+                    break;
+                case 'right':
+                    cube.style.transform = 'rotateY(-90deg)';
+                    break;
+                case 'left':
+                    cube.style.transform = 'rotateY(90deg)';
+                    break;
+                case 'top':
+                    cube.style.transform = 'rotateX(90deg)';
+                    break;
+                case 'bottom':
+                    cube.style.transform = 'rotateX(-90deg)';
+                    break;
+            }
+        }
+
+        function setActiveDot(activeDot) {
+            navDots.forEach(dot => dot.classList.remove('active'));
+            activeDot.classList.add('active');
+        }
+
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const face = dot.getAttribute('data-face');
+                rotateCube(face);
+                setActiveDot(dot);
+            });
+        });
+
+        function autoRotate() {
+            currentFaceIndex = (currentFaceIndex + 1) % faces.length;
+            rotateCube(faces[currentFaceIndex]);
+            setActiveDot(navDots[currentFaceIndex]);
+        }
+
+        setInterval(autoRotate, 3000);
+    </script>
+</body>
+</html>
